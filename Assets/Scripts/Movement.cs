@@ -22,9 +22,20 @@ public class Movement : MonoBehaviour
     public string BulletName;
     public GameObject BulletType;
     public float bulletSpeed;
-    
 
 
+    Vector3 Xposition;
+    public float NewXposition;
+
+    public GameObject spawnerbullet1;
+    public GameObject spawnerbullet2;
+    public GameObject spawnerbullet3;
+    public GameObject spawnerbullet4;
+    public GameObject spawnerbullet5;
+    public GameObject spawnerbullet6;
+    public GameObject spawnerbullet7;
+
+   
 
 
 
@@ -38,12 +49,15 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        Xposition = new Vector3(3.0f, 0.0f, 0.0f);
+       
     }
     
    
 
     void Update()
     {
+
 
         
 
@@ -87,6 +101,17 @@ public class Movement : MonoBehaviour
                 transform.Translate(Vector2.right * MoveSpeed * Time.deltaTime);
             }
 
+            //dash
+            if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.A))
+            {
+                transform.Translate(Vector2.left * MoveSpeed);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(Vector2.right * MoveSpeed);
+            }
+
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
             {
@@ -110,30 +135,32 @@ public class Movement : MonoBehaviour
         {
             if(BulletName == "BluePoint")
             {
-              Instantiate(bullets[0], gameObject.transform.position, gameObject.transform.rotation);
+              Instantiate(bullets[0], spawnerbullet4.transform.position, spawnerbullet4.transform.rotation);
                 
             }
 
             if(BulletName  == "RedPoint")
             {
-                Instantiate(bullets[1], gameObject.transform.position, gameObject.transform.rotation);
-                Instantiate(bullets[1], gameObject.transform.position, gameObject.transform.rotation);
-                Instantiate(bullets[1], gameObject.transform.position, gameObject.transform.rotation);
+                Instantiate(bullets[1], spawnerbullet3.transform.position, spawnerbullet3.transform.rotation);
+                Instantiate(bullets[1], spawnerbullet4.transform.position, spawnerbullet4.transform.rotation);
+                Instantiate(bullets[1], spawnerbullet5.transform.position, spawnerbullet5.transform.rotation);
             }
 
             if (BulletName == "GreenPoint")
             {
-                Instantiate(bullets[2], gameObject.transform.position, gameObject.transform.rotation);
-                Instantiate(bullets[2], gameObject.transform.position, gameObject.transform.rotation);
-                Instantiate(bullets[2], gameObject.transform.position, gameObject.transform.rotation);
-                Instantiate(bullets[2], gameObject.transform.position, gameObject.transform.rotation);
-                Instantiate(bullets[2], gameObject.transform.position, gameObject.transform.rotation);
-                Instantiate(bullets[2], gameObject.transform.position, gameObject.transform.rotation);
-                Instantiate(bullets[2], gameObject.transform.position, gameObject.transform.rotation);
+                Instantiate(bullets[2], spawnerbullet1.transform.position, spawnerbullet1.transform.rotation); ;
+                Instantiate(bullets[2], spawnerbullet2.transform.position, spawnerbullet2.transform.rotation);
+                Instantiate(bullets[2], spawnerbullet3.transform.position, spawnerbullet3.transform.rotation);
+                Instantiate(bullets[2], spawnerbullet4.transform.position, spawnerbullet4.transform.rotation);
+                Instantiate(bullets[2], spawnerbullet5.transform.position, spawnerbullet5.transform.rotation);
+                Instantiate(bullets[2], spawnerbullet6.transform.position, spawnerbullet6.transform.rotation);
+                Instantiate(bullets[2], spawnerbullet1.transform.position, spawnerbullet7.transform.rotation);
             }
         }
 
     }
+   
+  
 
     
 }
