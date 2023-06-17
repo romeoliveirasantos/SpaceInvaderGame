@@ -23,7 +23,7 @@ public class SpawnerEnemy : MonoBehaviour
         {
             
             int x = Random.Range(0, 4);
-            Debug.Log(x);
+            
             if (x < pos.Length)
             {
                 Instantiate(enemy, pos[x].transform.position, Quaternion.identity);

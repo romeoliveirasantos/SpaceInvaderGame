@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float velocity;
     private Vector2 PlayerDirection;
     public GameObject bulletObject, spawnerBulletPos;
+    public static int PlayerLife;
     
     
     
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         PlayerRig = GetComponent<Rigidbody2D>();
+        PlayerLife = 10;
      
         
     } 
@@ -35,7 +37,14 @@ public class Player : MonoBehaviour
         {
             Instantiate(bulletObject, spawnerBulletPos.transform.position, this.gameObject.transform.rotation);
         }
-        
+
+        Debug.Log(PlayerLife);
+
+        if(PlayerLife <= 0)
+        {
+            Debug.Log("Você Morreu");
+            Destroy(gameObject);
+        }
 
     }
 
@@ -44,11 +53,5 @@ public class Player : MonoBehaviour
         PlayerRig.MovePosition(PlayerRig.position + PlayerDirection * velocity * Time.fixedDeltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.layer == 8)
-        {
-            Destroy(gameObject);
-        }
-    }
+   
 }
